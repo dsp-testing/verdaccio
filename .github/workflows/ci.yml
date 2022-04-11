@@ -125,7 +125,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node_version }}
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: verdaccio-artifact
       - name: untar packages
@@ -149,7 +149,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: verdaccio-artifact
       - name: untar packages
@@ -176,7 +176,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: verdaccio-artifact
       - name: untar packages
