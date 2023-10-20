@@ -52,7 +52,7 @@
     "lodash": "4.17.15",
     "lunr": "2.3.9",
     "lunr-mutable-indexes": "^2.3.2",
-    "semver": "7.1.2"
+    "semver": "7.5.2"
   },
   "devDependencies": {
     "@verdaccio/mock": "workspace:6.0.0-6-next.7",
