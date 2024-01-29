@@ -37,7 +37,7 @@ jobs:
     - name: Install
       run: pnpm recursive install --frozen-lockfile --registry http://localhost:4873
     - name: Cache .pnpm-store
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: ~/.pnpm-store
         key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
@@ -55,7 +55,7 @@ jobs:
           node-version: 16
       - name: Install pnpm
         run: npm i pnpm@latest -g
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}     
@@ -75,7 +75,7 @@ jobs:
           node-version: 16
       - name: Install pnpm
         run: npm i pnpm@latest -g
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}     
@@ -95,7 +95,7 @@ jobs:
           node-version: 16
       - name: Install pnpm
         run: npm i pnpm@latest -g
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}     
@@ -132,7 +132,7 @@ jobs:
         run: tar -xzvf pkg.tar.gz -C ${{ github.workspace }}/packages    
       - name: Install pnpm
         run: npm i pnpm@latest -g
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}                                          
@@ -156,7 +156,7 @@ jobs:
         run: tar -xzvf pkg.tar.gz -C ${{ github.workspace }}/packages    
       - name: Install pnpm
         run: npm i pnpm@latest -g
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}                                          
@@ -183,7 +183,7 @@ jobs:
         run: tar -xzvf pkg.tar.gz -C ${{ github.workspace }}/packages    
       - name: Install pnpm
         run: npm i pnpm@latest -g
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}                                          
@@ -205,7 +205,7 @@ jobs:
       - name: Install pnpm
         run: npm i pnpm@latest -g
        # pnpm cache is not working for windows (we need a solution)
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}                                            
