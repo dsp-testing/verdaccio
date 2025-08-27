@@ -14,8 +14,8 @@ jobs:
     name: Prepare build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
         with:
           node-version: 14.x
       - name: install pnpm
@@ -29,7 +29,7 @@ jobs:
       - name: install dependencies
         run: pnpm install
       - name: Cache .pnpm-store
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
@@ -40,7 +40,7 @@ jobs:
       - name: tar packages
         run: |      
           tar -czvf ${{ github.workspace }}/pkg.tar.gz -C ${{ github.workspace }}/packages .
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: verdaccio-artifact
           path: pkg.tar.gz
@@ -60,11 +60,11 @@ jobs:
     name: Benchmark autocannon
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
         with:
           node-version: 14.x
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: verdaccio-artifact
       - name: untar packages
@@ -72,7 +72,7 @@ jobs:
       - name: install pnpm
         # require fixed version
         run: sudo npm i pnpm@6.6.1 -g
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}   
@@ -85,7 +85,7 @@ jobs:
         shell: bash
         env:
           DEBUG: metrics*
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: verdaccio-metrics-api
           path: ./api-results-${{matrix.verdaccioVersion}}-${{matrix.benchmark}}.json  
@@ -120,11 +120,11 @@ jobs:
     name: Benchmark hyperfine
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
         with:
           node-version: 14.x
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: verdaccio-artifact
       - name: untar packages
@@ -132,7 +132,7 @@ jobs:
       - name: install pnpm
         # require fixed version
         run: sudo npm i pnpm@6.6.1 -g
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}   
@@ -150,7 +150,7 @@ jobs:
         shell: bash
       - name: rename
         run: mv ./hyper-results.json ./hyper-results-${{matrix.verdaccioVersion}}-${{matrix.benchmark}}.json
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: verdaccio-metrics
           path: ./hyper-results-${{matrix.verdaccioVersion}}-${{matrix.benchmark}}.json  
