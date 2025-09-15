@@ -18,7 +18,7 @@
     "clipanion": "3.0.0-rc.12",
     "temp-dir": "2.0.0",
     "get-port": "5.1.1",
-    "semver": "7.3.5"
+    "semver": "7.5.2"
   },
   "devDependencies": {
     "autocannon": "7.3.0",
